@@ -1,0 +1,46 @@
+<div class="row margin-0">
+	<div class="col-2 col-md-1"><a href="#" data-activates="nav-mobile" class="header-icon-1 open-left-sidebar button-collapse"><i class="fa fa-navicon"></i></a></div>
+	<div class="col-8 col-md-10 padding-0"><form id="search-form"><input class="text-field header-search" type="text" placeholder="I'm shopping for..."></form></div>
+	<div class="col-2 col-md-1"><a href="cart.html" class="header-icon-4"><i class="fa fa-shopping-cart"></i><span class="badge badge-pill badge-dark"></span></a></div>
+</div>
+<script>
+(function($){
+	$(function(){
+		try
+		{
+			$('.button-collapse').sideNav();
+		}
+		catch(e)
+		{
+			alert('Please install materializecss.js & materialize_custom.css');
+		}
+	});
+	
+	$("#search-form input").on("focus", function(e){
+		$("#container").stop( false, false ).animate({
+			"opacity": "0.2"
+		});
+		$("#container").click(function(e){
+			e.preventDefault();
+			$("#container").stop( false, false ).animate({"opacity": "1"}, function() {
+				$("#container").unbind("click");
+				$("#search-form input").unbind("blur");
+			});
+		});
+		
+		$("#search-form input").blur(function(e){
+			e.preventDefault();
+			$("#container").stop( false, false ).animate({"opacity": "1"}, function() {
+				$("#container").unbind("click");
+				$("#search-form input").unbind("blur");
+			});
+		});
+	});
+	
+	$("#search-form").submit(function(e){
+		e.preventDefault();
+		target = "product_search.html?search=" + $("#search-form input").val() + "#" + n;
+		location.href = target;
+	});
+})(jQuery);
+</script>

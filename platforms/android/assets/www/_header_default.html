@@ -1,0 +1,16 @@
+<div class="row margin-0">
+	<div class="col-2 col-md-1"><a class="header-icon-1" onclick="history.back();"><i class="fa fa-arrow-left text-white"></i></a></div>
+	<div class="col-8 col-md-10"><span class="header-icon-1 lead"></span></div>
+</div>
+<script>
+	var heading = $("#container h2").eq(0).html();
+	$("#container h2").eq(0).remove();
+	
+	<!-- if(heading == "") -->
+	<!-- { -->
+		heading = $("#content h2").eq(0).html();
+		$("#content h2").eq(0).remove();
+	<!-- } -->
+	
+	$(".header-fixed span.lead").html(heading);
+</script>
