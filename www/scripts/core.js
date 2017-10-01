@@ -106,8 +106,6 @@ function saveScroll()
 {	
 	if (typeof(Storage) !== "undefined") {
 		localStorage.setItem(window.location.href, parseInt($("#page-content-scroll").scrollTop()));
-	} else {
-		// Sorry! No Web Storage support..
 	}
 }
 
@@ -118,20 +116,13 @@ function gotoScroll(position = false)
 		if (typeof(Storage) !== "undefined") {
 			setTimeout(function(){
 				$("#page-content-scroll").scrollTop(localStorage.getItem(window.location.href));
+				$("#page-content-scroll").scroll(function(){
+					saveScroll();
+				});
 			}, 100);
-		}
-		
-		$(window).on("unload", function(){
-			saveScroll();
-		});
-		
-		$("#page-content-scroll").scroll(function(){
-			saveScroll();
-		});
+		}		
 	}else{
-		// setTimeout(function(){
-			$("#page-content-scroll").scrollTop(position);
-		// }, 200);
+		$("#page-content-scroll").scrollTop(position);
 	}
 }
 
@@ -744,9 +735,10 @@ function appInit()
 
 function afterInit()
 {
-	refreshCart();
 	orientationChange();
+	appRender();
 	gotoScroll();	
+	refreshCart();
 	
 	var d = new Date();
 	n = d.getTime();
@@ -784,7 +776,6 @@ function afterInit()
 		overlay = false;
 	})
 	
-	appRender();
 	
 	FastClick.attach(document.body);
 	// new FastClick(document.body);
@@ -961,7 +952,7 @@ function hammers(el)
 	
 	mcs.on("singletap doubletap", function (ev) {
 		var transforms = [];
-		// $(el).parent().css("transition", "transform 0.3s ease");
+		$(el).parent().css("transition", "transform 0.3s ease");
 		if(adjustScale == 1)
 		{
 			adjustScale = 2;
@@ -973,9 +964,9 @@ function hammers(el)
 			$(el).parent().css("transform", transforms.join(' '));
 		}
 		
-		// setTimeout(function(){
-			// $(el).parent().css("transition", "");
-		// }, 300);
+		setTimeout(function(){
+			$(el).parent().css("transition", "");
+		}, 300);
 	});
 }
 

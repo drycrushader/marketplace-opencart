@@ -3975,6 +3975,8 @@ if (Vel) {
                     overflow: '',
                     width: ''
                   });
+				  
+				  removeMenu();
                   // Slide menu closed
                   menu.velocity({ 'translateX': [-1 * options.menuWidth - 10, leftPos] }, { duration: 200, queue: false, easing: 'easeOutQuad' });
                   $overlay.velocity({ opacity: 0 }, { duration: 200, queue: false, easing: 'easeOutQuad',
@@ -4005,6 +4007,7 @@ if (Vel) {
                     width: ''
                   });
 
+				  removeMenu();
                   // Slide menu closed
                   menu.velocity({ 'translateX': [options.menuWidth + 10, rightPos] }, { duration: 200, queue: false, easing: 'easeOutQuad' });
                   $overlay.velocity({ opacity: 0 }, { duration: 200, queue: false, easing: 'easeOutQuad',

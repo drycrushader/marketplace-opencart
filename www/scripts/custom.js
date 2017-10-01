@@ -1,7 +1,7 @@
 function appRender() {       
 
     //FastClick
-    $(function() {FastClick.attach(document.body);});
+    // $(function() {FastClick.attach(document.body);});
 	    
     //Preload Image
     $(function() {
@@ -841,19 +841,5 @@ function appRender() {
         $(this).parent().parent().slideUp(250);
 		var $qty=$(this).closest('div').find('.qty');
 		$qty.val(0).change();
-    });
-    
-    //Tutorial Click
-    if (typeof window.sessionStorage != undefined) {
-        if (!sessionStorage.getItem('enabled_cookie1')) {
-            $('.tutorial').show();
-            sessionStorage.setItem('enabled_cookie1', true);
-            sessionStorage.setItem('storedWhen', (new Date()).getTime());
-        }
-    }
-    
-    $('.tutorial').click(function(){
-       $(this).fadeOut(500); 
-    });
-    
+    });    
 }
