@@ -1,7 +1,7 @@
 *, body, textarea
 {
 	font-family: 'Open Sans', -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-	font-size: 13px;
+	font-size: 12px;
 	line-height: normal;
 	/* font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; */
     font-weight: 400;
@@ -118,17 +118,24 @@ ul.breadcrumb
 
 .nav-tabs {
     border-bottom: none;
-	background: #333;
+	/* background: #333; */
+	background: #696969;
+    background: dimgray;
 	display: -webkit-box;
     overflow-x: scroll;
 
 }
 
 .nav-tabs .nav-link {
-    border-right: 1px solid #666;
+    border-right: 1px solid #888;
     border-radius: 0;
-	color: white;
+	color: white !important;
 }
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057 !important;
+}
+
 .nav-tabs .nav-item:last-child .nav-link {
 	border-right: none;
 }
@@ -155,6 +162,10 @@ ul.breadcrumb
 .tab-content .tab-pane {
     padding: 15px;
     padding-top: 25px;
+}
+
+.fade {
+    transition: none;
 }
 
 .table {
@@ -185,7 +196,7 @@ ul.breadcrumb
 	border-left: none;
 	color: #F3F3F3;
 	padding-left: 5px;
-	min-height: 150px;
+	min-height: 152px;
 }
 
 .sidebar-left.sidebar-light .sidebar-header > div.absolute {
@@ -215,6 +226,11 @@ ul.breadcrumb
     border-radius: 0;
     width: 100%;
 	margin: 0;
+}
+
+.menu-item {
+	font-size: 12px; 
+	font-weight: normal !important;
 }
 
 .header-icon-1, .header-icon-2, .header-icon-3, .header-icon-4, .header-search {
@@ -257,6 +273,21 @@ ul.breadcrumb
     padding-bottom: 20px;
 }
 
+.swiper-slide-carousel
+{
+	padding-top: 1.5rem!important;
+    padding-bottom: 1rem!important;
+    margin-right: 0!important;
+    margin-left: 1rem!important;
+	min-height: 100%;
+}
+
+.swiper-slide-carousel p
+{
+	font-size: 12px;
+	-webkit-line-clamp: 3 !important;
+}
+
 .category_container, .brand_container
 {
 	text-align: center;
@@ -284,7 +315,7 @@ ul.breadcrumb
 	padding-left: 8px;
 }
 
-.category_container div[class^="col-"] > div, .brand_container div[class^="col-"] > div
+.category_container div[class^="col-"] > div, .brand_container div[class^="col-"] > div, .shadow
 {
 	border-radius: 4px;
 	background: white;
@@ -347,7 +378,7 @@ ul.breadcrumb
 
 .product_grid div.col-12 > a > div > div > p
 {
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
@@ -366,7 +397,7 @@ ul.breadcrumb
 .product_grid div.col-12 > a > div > div > span > small
 {
 	display: block;
-	margin-left: 2px;
+	margin-left: 1px;
 }
 
 .product_grid div.col-12 > a > div > div > small {
@@ -525,8 +556,6 @@ ul.breadcrumb
     -o-transition: all 250ms ease;
     transition: all 250ms ease;
 }
-
-
 
 .buttons .btn.btn-primary:hover {
     background-color: #3498db;

@@ -1,6 +1,6 @@
 var appname = "";
-var host = "http://mobi.5-degree.com/";  // Live Server
-// var host = "http://10.10.30.44/opencart2/"; // Development Server
+// var host = "http://mobi.5-degree.com/";  // Live Server
+var host = "http://10.10.30.44/opencart2/"; // Development Server
 // var host = "http://localhost/opencart2/"; // Development Server
 var host_parent = "https://demo.opencart.com/";
 var currentOrientation = "";
@@ -55,10 +55,15 @@ function onBackKeyDown() {
 		$('#thumbModal').modal('hide');
 		overlay = false;
 	}else{
-		if($("body.home").length) {
-			navigator.app.exitApp();
+		if($("#search-form input").is(":focus"))
+		{
+			$("#search-form input").blur();
 		}else{
-			navigator.app.backHistory();
+			if($("body.home").length) {
+				navigator.app.exitApp();
+			}else{
+				navigator.app.backHistory();
+			}
 		}
 	}
 }
@@ -130,7 +135,7 @@ function refreshCart()
 {
 	$.ajax({
 		method: "GET",
-		url: host + "index.php?route=common/cart",
+		url: host + "index.php?route=common/cart/mobi_index",
 		dataType: "text",
 		xhrFields: {
 			withCredentials: true
@@ -842,7 +847,7 @@ var wishlist = {
 						scrollTop: 0
 					});
 					
-					var bodytext = json['success'];
+					var bodytext = json['success_mobi'];
 					
 					$("#alertModal .modal-title").html('');
 					$("#alertModal .modal-body").html(bodytext.replace("href=", "data-href="));
