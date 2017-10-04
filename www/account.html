@@ -80,20 +80,24 @@
 							// post['lastname']    = data.last_name;
 							// post['email']       = data.email;
 							
-							// $.ajax({
-							// 	method: "POST",
-							// 	url: host + "index.php?route=extension/module/mobi_sociallogin/FacebookSecondLogin",
-							// 	data: { id: data.id, firstname: data.first_name, lastname: data.last_name, email: data.email }
-							// 	async: false,
-							// 	xhrFields: {
-							// 		withCredentials: true
-							// 	}
-							// }).done(function(data) {
-							// 	json_user = JSON.parse(data);
-							// 	localStorage.setItem("json_user", data);
-							// });
-							
-							alert(data.id);
+							$.ajax({
+							 	method: "POST",
+								url: host + "index.php?route=extension/module/mobi_sociallogin/FacebookSecondLogin",
+								data: { id: data.id, firstname: data.first_name, lastname: data.last_name, email: data.email }
+								async: false,
+								xhrFields: {
+									withCredentials: true
+								}
+							}).done(function(data) {
+								if(data == "200")
+								{
+									localStorage.removeItem("json_user");
+									localStorage.removeItem("json_language");
+									location.reload();
+								}else{
+									alert("Failed");
+								}
+							});
 						},
 						error: errorHandler
 					});
