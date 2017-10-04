@@ -975,7 +975,7 @@ function hammers(el)
 }
 
 function onFacebookLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,zoom=no,toolbarposition=top');
+	var appInBrowser = window.open(authorize_url, '_blank', 'useWideViewPort=no,zoom=no,toolbarposition=top');
 	// var appInBrowser = window.open("http://mobi.5-degree.com/index.php?route=account/login#_=_");
 
 	appInBrowser.addEventListener('loadstart', function(event) {
@@ -993,7 +993,7 @@ function facebookLoc(loc,appInBrowser) {
 }
 
 function onGoogleLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,zoom=no,toolbarposition=top');
+	var appInBrowser = window.open(authorize_url, '_blank', 'useWideViewPort=no,zoom=no,toolbarposition=top');
 
 	appInBrowser.addEventListener('loadstart', function(event) {
 		googleLoc(event.url,appInBrowser);
@@ -1010,7 +1010,7 @@ function googleLoc(loc,appInBrowser) {
 }
 
 function onTwitterLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,zoom=no,toolbarposition=top');
+	var appInBrowser = window.open(authorize_url, '_blank', 'useWideViewPort=no,zoom=no,toolbarposition=top');
 
 	appInBrowser.addEventListener('loadstart', function(event) {
 		twitterLoc(event.url,appInBrowser);
@@ -1018,7 +1018,7 @@ function onTwitterLogin(authorize_url) {
 }
 
 function twitterLoc(loc,appInBrowser) {
-	if (loc.indexOf(host + "index.php?route=account/account#") > -1){
+	if (loc.indexOf(host + "index.php?route=account/account") > -1){
 		localStorage.removeItem("json_user");
 		localStorage.removeItem("json_language");
 		appInBrowser.close();
