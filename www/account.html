@@ -83,7 +83,7 @@
 							$.ajax({
 							 	method: "POST",
 								url: host + "index.php?route=extension/module/mobi_sociallogin/FacebookSecondLogin",
-								data: { id: data.id, firstname: data.first_name, lastname: data.last_name, email: data.email }
+								data: { id: data.id, firstname: data.first_name, lastname: data.last_name, email: data.email },
 								async: false,
 								xhrFields: {
 									withCredentials: true
