@@ -1,7 +1,5 @@
 var appname = "";
-// var host = "http://mobi.5-degree.com/";  // Live Server
-var host = "http://10.10.30.44/opencart2/"; // Development Server
-// var host = "http://localhost/opencart2/"; // Development Server
+var host = "http://mobi.5-degree.com/";  // Live Server
 var host_parent = "https://demo.opencart.com/";
 var currentOrientation = "";
 var overlay = false;
@@ -84,7 +82,8 @@ function orientationChange(e) {
 
 function renderLayout(orient)
 {
-	if($(window).width() >= 768)
+	// if($(window).width() >= 768)
+	if(orient == "landscape")
 	{
 		$(".full-height").css("height", ($(window).height() - 60) + "px");
 		if($("ul.breadcrumbs li").length == 0)
