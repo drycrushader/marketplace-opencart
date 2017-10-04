@@ -975,7 +975,7 @@ function hammers(el)
 }
 
 function onFacebookLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,location=no,zoom=no,toolbarposition=top');
+	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,zoom=no,toolbarposition=top');
 	// var appInBrowser = window.open("http://mobi.5-degree.com/index.php?route=account/login#_=_");
 
 	appInBrowser.addEventListener('loadstart', function(event) {
