@@ -993,7 +993,7 @@ function facebookLoc(loc,appInBrowser) {
 }
 
 function onGoogleLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,location=no,zoom=no,toolbarposition=top');
+	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,zoom=no,toolbarposition=top');
 
 	appInBrowser.addEventListener('loadstart', function(event) {
 		googleLoc(event.url,appInBrowser);
@@ -1010,7 +1010,7 @@ function googleLoc(loc,appInBrowser) {
 }
 
 function onTwitterLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,location=no,zoom=no,toolbarposition=top');
+	var appInBrowser = window.open(authorize_url, '_self', 'useWideViewPort=no,zoom=no,toolbarposition=top');
 
 	appInBrowser.addEventListener('loadstart', function(event) {
 		twitterLoc(event.url,appInBrowser);
