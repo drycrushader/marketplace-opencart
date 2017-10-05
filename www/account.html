@@ -28,7 +28,6 @@
 <script type="text/javascript" src="scripts/plugins.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/jquery.jscroll.js"></script>
-<script type="text/javascript" src="scripts/openfb.js"></script>
 </head>
 
 <body class="account" onload="onLoad()">
@@ -58,61 +57,48 @@
 <script>
 	function onFacebookLogins(appid = "")
 	{
-		// Defaults to sessionStorage for storing the Facebook token
 		openFB.init({appId: appid});
-		//  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
-		//  openFB.init({appId: 'YOUR_FB_APP_ID', tokenStore: window.localStorage});
 		openfblogin();
 	}
 	
     function openfblogin() {
-        openFB.login(
-			function(response) {
-				if(response.status === 'connected') {
-					// alert('Facebook login succeeded, got access token: ' + response.authResponse.accessToken);
-					openFB.api({
-						path: '/me',
-						params: { fields: "name,email,id,first_name,last_name" },
-						success: function(data) {
-							// var post = [];
-							// post['id']          = data.id;
-							// post['firstname']   = data.first_name;
-							// post['lastname']    = data.last_name;
-							// post['email']       = data.email;
-							
-							$.ajax({
-							 	method: "POST",
-								url: host + "index.php?route=extension/module/mobi_sociallogin/FacebookSecondLogin",
-								data: { id: data.id, firstname: data.first_name, lastname: data.last_name, email: data.email },
-								async: false,
-								xhrFields: {
-									withCredentials: true
-								}
-							}).done(function(data) {
-								if(data == "200")
-								{
-									localStorage.removeItem("json_user");
-									localStorage.removeItem("json_language");
-									location.reload();
-								}else{
-									alert("Failed");
-								}
-							});
-						},
-						error: errorHandler
-					});
-				} else {
-					// alert('Facebook login failed: ' + response.error);
-				}
+        openFB.login( function(response) {
+			if(response.status === 'connected') {
+				openFB.api({
+					path: '/me',
+					params: { fields: "name,email,id,first_name,last_name" },
+					success: function(data) {
+						$.ajax({
+							method: "POST",
+							url: host + "index.php?route=extension/module/mobi_sociallogin/FacebookSecondLogin",
+							data: { data: data },
+							async: false,
+							xhrFields: {
+								withCredentials: true
+							}
+						}).done(function(data) {
+							if(data == "200")
+							{
+								localStorage.removeItem("json_user");
+								localStorage.removeItem("json_language");
+								location.reload();
+							}else{
+								console.log(data);
+							}
+						});
+					},
+					error: errorHandler
+				});
+			}else{
+				console.log('Failed: ' + response.error);
+			}
 		}, {scope: 'email'});
     }
 	
     function logout() {
-        openFB.logout(
-                function() {
-                    alert('Logout successful');
-                },
-                errorHandler);
+        openFB.logout(function(){
+			alert('Logout successful');
+        }, errorHandler);
     }
     function errorHandler(error) {
         // alert(error.message);
