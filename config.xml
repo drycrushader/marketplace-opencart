@@ -75,6 +75,9 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.1" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
+	<plugin name="cordova-plugin-googleplus" spec="*">
+		<variable name="REVERSED_CLIENT_ID" value="208253046430-g4c0qorhqt54fs5349g3arkm87nkj661.apps.googleusercontent.com"/>
+	</plugin>
 	<plugin name="com.ludei.webviewplus.ios" spec="*"/>
 	<plugin name="com.ludei.webviewplus.android" spec="*"/>
 	<preference name="Orientation" value="portrait"/>

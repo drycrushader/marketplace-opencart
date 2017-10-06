@@ -974,58 +974,6 @@ function hammers(el)
 	});
 }
 
-function onFacebookLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_blank', 'useWideViewPort=no,zoom=no,toolbarposition=top');
-	// var appInBrowser = window.open("http://mobi.5-degree.com/index.php?route=account/login#_=_");
-
-	appInBrowser.addEventListener('loadstart', function(event) {
-		facebookLoc(event.url,appInBrowser);
-	});
-}
-
-function facebookLoc(loc,appInBrowser) {
-	if (loc.indexOf(host + "index.php?route=account/account#_=_") > -1){
-		localStorage.removeItem("json_user");
-		localStorage.removeItem("json_language");
-		appInBrowser.close();
-		location.reload();
-	}
-}
-
-function onGoogleLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_blank', 'useWideViewPort=no,zoom=no,toolbarposition=top');
-
-	appInBrowser.addEventListener('loadstart', function(event) {
-		googleLoc(event.url,appInBrowser);
-	});
-}
-
-function googleLoc(loc,appInBrowser) {
-	if (loc.indexOf(host + "index.php?route=account/account#") > -1){
-		localStorage.removeItem("json_user");
-		localStorage.removeItem("json_language");
-		appInBrowser.close();
-		location.reload();
-	}
-}
-
-function onTwitterLogin(authorize_url) {
-	var appInBrowser = window.open(authorize_url, '_blank', 'useWideViewPort=no,zoom=no,toolbarposition=top');
-
-	appInBrowser.addEventListener('loadstart', function(event) {
-		twitterLoc(event.url,appInBrowser);
-	});
-}
-
-function twitterLoc(loc,appInBrowser) {
-	if (loc.indexOf(host + "index.php?route=account/account") > -1){
-		localStorage.removeItem("json_user");
-		localStorage.removeItem("json_language");
-		appInBrowser.close();
-		location.reload();
-	}
-}
-
 $(document).ready(function(){
 	appInit();
 });
