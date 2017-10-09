@@ -68,7 +68,7 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-	<preference name="OverrideUserAgent" value="Mozilla/5.0 (Linux; U; Android-4.0.3; en-us; Galaxy Nexus Build/IML74K) AppleWebKit/535.7 (KHTML, like Gecko) CrMo/16.0.912.75 Mobile Safari/535.7" />
+	<preferencess name="OverrideUserAgent" value="Mozilla/5.0 (Linux; U; Android-4.0.3; en-us; Galaxy Nexus Build/IML74K) AppleWebKit/535.7 (KHTML, like Gecko) CrMo/16.0.912.75 Mobile Safari/535.7" />
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-device-orientation" spec="^1.0.7" />
     <plugin name="cordova-plugin-dialogs" spec="^1.3.3" />
@@ -76,7 +76,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
 	<plugin name="cordova-plugin-googleplus" spec="*">
-		<variable name="REVERSED_CLIENT_ID" value="208253046430-g4c0qorhqt54fs5349g3arkm87nkj661.apps.googleusercontent.com"/>
+		<variable name="REVERSED_CLIENT_ID" value="208253046430-oaaovig89hmv8crt9m17vgnqucnj1ps4.apps.googleusercontent.com"/>
 	</plugin>
 	<plugin name="com.ludei.webviewplus.ios" spec="*"/>
 	<plugin name="com.ludei.webviewplus.android" spec="*"/>
