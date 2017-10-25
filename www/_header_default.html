@@ -1,16 +1,5 @@
 <div class="row margin-0">
-	<div class="col-2 col-md-1"><a class="header-icon-1" onclick="history.back();"><i class="fa fa-arrow-left text-white"></i></a></div>
-	<div class="col-8 col-md-10"><span class="header-icon-1 lead"></span></div>
+	<div class="col-2 col-md-1"><a class="header-icon-1" onclick="history.back();"><i class="fa fa-arrow-left"></i></a></div>
+	<div class="col-8 col-md-10 p-0"><form id="search-form"><input class="text-field header-search" type="search" placeholder="" disabled></form></div>
+	<div class="col-2 col-md-1"><a href="cart.html" class="header-icon-4"><i class="fa fa-shopping-cart"></i><span class="badge badge-pill badge-dark"></span></a></div>
 </div>
-<script>
-	var heading = $("#container h2").eq(0).html();
-	$("#container h2").eq(0).remove();
-	
-	<!-- if(heading == "") -->
-	<!-- { -->
-		heading = $("#content h2").eq(0).html();
-		$("#content h2").eq(0).remove();
-	<!-- } -->
-	
-	$(".header-fixed span.lead").html(heading);
-</script>

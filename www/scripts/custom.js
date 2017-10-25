@@ -761,9 +761,9 @@ function appRender() {
         // id for new nanobar
         id: 'mynano'
     };
-    var nanobar = new Nanobar( options );
-    nanobar.go( 30 ); // size bar 30%
-    nanobar.go(100); // size bar 100%
+    // var nanobar = new Nanobar( options );
+    // nanobar.go( 30 ); // size bar 30%
+    // nanobar.go(100); // size bar 100%
     
     //Loading Thumb Layout for News, 10 articles at a time
     $(function(){
