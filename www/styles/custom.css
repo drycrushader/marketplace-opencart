@@ -97,7 +97,7 @@ label
 img.preloader
 {
 	margin: auto;
-    margin-top: 200px;
+    margin-top: 40vh;
     width: 8%;
 }
 
@@ -614,6 +614,7 @@ ul.breadcrumb
     -ms-transition: all 250ms ease;
     -o-transition: all 250ms ease;
     transition: all 250ms ease;
+	background: #ccc;
 }
 
 .buttons .btn.btn-primary:hover {
@@ -720,6 +721,27 @@ body.product-single .radio.img label {
 
 body.product-single .radio.img label.not-selected {
 	opacity: 0.8;
+}
+
+body.product-single #mainContent {
+	max-height: calc(100vh - 60px) !important;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+@media (orientation: landscape)
+{
+	body.product-single .product_left{
+		max-width: calc(100vh - 60px) !important;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+	
+	body.product-single .product_right{
+		max-width: calc(100% - 100vh + 60px) !important;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 }
 
 /* Cart Page */

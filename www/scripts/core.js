@@ -895,6 +895,11 @@ function hammers(el)
 	var image = document.getElementById($(el).attr("id"));
 
 	var mcs = new Hammer.Manager(image);
+	
+	mcs.set({
+		// preventDefault: true,
+		touchAction: "auto"
+	});
 
 	var pinch = new Hammer.Pinch();
 	var pan = new Hammer.Pan();
@@ -913,14 +918,14 @@ function hammers(el)
 
 	// Prevent long press saving on mobiles.
 	$(el).parent().on('touchstart', function (e) {
-		e.preventDefault()
+		// e.preventDefault()
 	});
 	
 	mcs.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
 	mcs.add( new Hammer.Tap({ event: 'singletap' }) );
 
 	// Handles pinch and pan events/transforming at the same time;
-	mcs.on("pinch pan", function (ev) {
+	mcs.on("pinch panleft panright panup pandown", function (ev) {
 
 		var transforms = [];
 
@@ -930,6 +935,19 @@ function hammers(el)
 		currentDeltaY = adjustDeltaY + (ev.deltaY / currentScale);
 
 		// Concatinating and applying parameters.
+		
+		if(ev.type == "panup" || ev.type == "pandown")
+		{
+			if(currentScale > 1)
+			{
+				$(el).parent().on('touchstart', function (e) {
+					e.preventDefault()
+				});
+			}else{
+				$(el).parent().unbind('touchstart');
+			}
+		}
+		
 		if(currentScale >= 1)
 		{
 			if(currentScale > 2)
@@ -970,7 +988,6 @@ function hammers(el)
 		adjustScale = currentScale;
 		adjustDeltaX = currentDeltaX;
 		adjustDeltaY = currentDeltaY;
-
 	});
 	
 	mcs.get('doubletap').recognizeWith('singletap');
@@ -978,16 +995,27 @@ function hammers(el)
 	
 	mcs.on("singletap doubletap", function (ev) {
 		var transforms = [];
+		
 		$(el).parent().css("transition", "transform 0.3s ease");
+		
 		if(adjustScale == 1)
 		{
 			adjustScale = 2;
 			transforms.push('scale(2)');
 			$(el).parent().css("transform", transforms.join(' '));
+			$(el).parent().on('touchstart', function (e) {
+				e.preventDefault()
+			});
 		}else{
 			adjustScale = 1
 			transforms.push('scale(1)');
 			$(el).parent().css("transform", transforms.join(' '));
+			$(el).parent().unbind('touchstart');
+		}
+		
+		if(currentScale > 1)
+		{
+		}else{
 		}
 		
 		setTimeout(function(){
