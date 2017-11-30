@@ -1,6 +1,6 @@
 var appname = "";
-var host = "http://10.10.30.44/opencart2/";  // Live Server
-var host_parent = "https://demo.opencart.com/";
+var host = "http://mobi.5-degree.com/";  // Live Server
+var host_parent = "https://opencart.5-degree.com/";
 var currentOrientation = "";
 var overlay = false;
 var n = "";
@@ -901,13 +901,6 @@ function hammers(el)
 		touchAction: "auto"
 	});
 
-	var pinch = new Hammer.Pinch();
-	var pan = new Hammer.Pan();
-
-	pinch.recognizeWith(pan);
-
-	mcs.add([pinch, pan]);
-
 	var adjustScale = 1;
 	var adjustDeltaX = 0;
 	var adjustDeltaY = 0;
@@ -915,18 +908,13 @@ function hammers(el)
 	currentScale = null;
 	currentDeltaX = null;
 	currentDeltaY = null;
-
-	// Prevent long press saving on mobiles.
-	$(el).parent().on('touchstart', function (e) {
-		// e.preventDefault()
-	});
 	
+	mcs.add( new Hammer.Pan());
 	mcs.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
 	mcs.add( new Hammer.Tap({ event: 'singletap' }) );
 
 	// Handles pinch and pan events/transforming at the same time;
-	mcs.on("pinch panleft panright panup pandown", function (ev) {
-
+	mcs.on("panleft panright panup pandown", function (ev) {
 		var transforms = [];
 
 		// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
@@ -934,20 +922,7 @@ function hammers(el)
 		currentDeltaX = adjustDeltaX + (ev.deltaX / currentScale);
 		currentDeltaY = adjustDeltaY + (ev.deltaY / currentScale);
 
-		// Concatinating and applying parameters.
-		
-		if(ev.type == "panup" || ev.type == "pandown")
-		{
-			if(currentScale > 1)
-			{
-				$(el).parent().on('touchstart', function (e) {
-					e.preventDefault()
-				});
-			}else{
-				$(el).parent().unbind('touchstart');
-			}
-		}
-		
+		// Concatinating and applying parameters.		
 		if(currentScale >= 1)
 		{
 			if(currentScale > 2)
@@ -983,7 +958,6 @@ function hammers(el)
 
 
 	mcs.on("panend pinchend", function (ev) {
-
 		// Saving the final transforms for adjustment next time the user interacts.
 		adjustScale = currentScale;
 		adjustDeltaX = currentDeltaX;
@@ -1003,19 +977,17 @@ function hammers(el)
 			adjustScale = 2;
 			transforms.push('scale(2)');
 			$(el).parent().css("transform", transforms.join(' '));
+			
 			$(el).parent().on('touchstart', function (e) {
-				e.preventDefault()
+				e.preventDefault();
 			});
+			
 		}else{
 			adjustScale = 1
 			transforms.push('scale(1)');
 			$(el).parent().css("transform", transforms.join(' '));
+			
 			$(el).parent().unbind('touchstart');
-		}
-		
-		if(currentScale > 1)
-		{
-		}else{
 		}
 		
 		setTimeout(function(){
