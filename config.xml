@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.fivedegree.amo" version="1.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.fivedegree.amo" version="1.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MOBI MarketPlace Demo</name>
     <description></description>
-    <author email="drycrushader@gmail.com" href="http://cordova.io">
+    <author email="drycrushader@gmail.com" href="http://5-degree.com">
         5-Degree
     </author>
     <content src="index.html" />
@@ -76,7 +76,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.2" />
 	<plugin name="cordova-plugin-googleplus" spec="*">
-		<variable name="REVERSED_CLIENT_ID" value="208253046430-oaaovig89hmv8crt9m17vgnqucnj1ps4.apps.googleusercontent.com"/>
+		<variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.208253046430-oaaovig89hmv8crt9m17vgnqucnj1ps4"/>
 	</plugin>
 	<plugin name="com.ludei.webviewplus.ios" spec="*"/>
 	<plugin name="com.ludei.webviewplus.android" spec="*"/>

@@ -617,6 +617,11 @@ ul.breadcrumb
 	background: #ccc;
 }
 
+.buttons .btn.btn-dark {
+    color: #fff;
+    background-color: #343a40;
+}
+
 .buttons .btn.btn-primary:hover {
     background-color: #3498db;
 }

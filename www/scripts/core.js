@@ -1,6 +1,6 @@
 var appname = "";
 var host = "http://mobi.5-degree.com/";  // Live Server
-var host_parent = "https://opencart.5-degree.com/";
+var host_parent = "http://opencart.5-degree.com/";
 var currentOrientation = "";
 var overlay = false;
 var n = "";
@@ -868,7 +868,12 @@ var wishlist = {
 						scrollTop: 0
 					});
 					
-					var bodytext = json['success_mobi'];
+					if(json['success_mobi'] === undefined)
+					{
+						var bodytext = json['success'];
+					}else{
+						var bodytext = json['success_mobi'];
+					}
 					
 					$("#alertModal .modal-title").html('');
 					$("#alertModal .modal-body").html(bodytext.replace("href=", "data-href="));
@@ -890,111 +895,7 @@ var wishlist = {
 	}
 }
 
-function hammers(el)
-{
-	var image = document.getElementById($(el).attr("id"));
 
-	var mcs = new Hammer.Manager(image);
-	
-	mcs.set({
-		// preventDefault: true,
-		touchAction: "auto"
-	});
-
-	var adjustScale = 1;
-	var adjustDeltaX = 0;
-	var adjustDeltaY = 0;
-
-	currentScale = null;
-	currentDeltaX = null;
-	currentDeltaY = null;
-	
-	mcs.add( new Hammer.Pan());
-	mcs.add( new Hammer.Tap({ event: 'doubletap', taps: 2 }) );
-	mcs.add( new Hammer.Tap({ event: 'singletap' }) );
-
-	// Handles pinch and pan events/transforming at the same time;
-	mcs.on("panleft panright panup pandown", function (ev) {
-		var transforms = [];
-
-		// Adjusting the current pinch/pan event properties using the previous ones set when they finished touching
-		currentScale = adjustScale * ev.scale;
-		currentDeltaX = adjustDeltaX + (ev.deltaX / currentScale);
-		currentDeltaY = adjustDeltaY + (ev.deltaY / currentScale);
-
-		// Concatinating and applying parameters.		
-		if(currentScale >= 1)
-		{
-			if(currentScale > 2)
-			{
-				currentScale = 2;
-			}
-			
-			transforms.push('scale(' + currentScale + ')');
-			max_pos_x = Math.ceil((currentScale - 1) * $(el).width() / 2) / 2;
-			max_pos_y = Math.ceil((currentScale - 1) * $(el).height() / 2) / 2;
-			if (currentDeltaX > max_pos_x) {
-				currentDeltaX = max_pos_x;
-			}
-			if (currentDeltaX < -max_pos_x) {
-				currentDeltaX = -max_pos_x;
-			}
-			if (currentDeltaY > max_pos_y) {
-				currentDeltaY = max_pos_y;
-			}
-			if (currentDeltaY < -max_pos_y) {
-				currentDeltaY = -max_pos_y;
-			}
-			
-			transforms.push('translate(' + currentDeltaX + 'px,' + currentDeltaY + 'px)');
-		}else{
-			adjustScale = 1;
-			adjustDeltaX = 0;
-			adjustDeltaY = 0;
-		}
-		$(el).parent().css("transform", transforms.join(' '));
-
-	});
-
-
-	mcs.on("panend pinchend", function (ev) {
-		// Saving the final transforms for adjustment next time the user interacts.
-		adjustScale = currentScale;
-		adjustDeltaX = currentDeltaX;
-		adjustDeltaY = currentDeltaY;
-	});
-	
-	mcs.get('doubletap').recognizeWith('singletap');
-	mcs.get('singletap').requireFailure('doubletap');
-	
-	mcs.on("singletap doubletap", function (ev) {
-		var transforms = [];
-		
-		$(el).parent().css("transition", "transform 0.3s ease");
-		
-		if(adjustScale == 1)
-		{
-			adjustScale = 2;
-			transforms.push('scale(2)');
-			$(el).parent().css("transform", transforms.join(' '));
-			
-			$(el).parent().on('touchstart', function (e) {
-				e.preventDefault();
-			});
-			
-		}else{
-			adjustScale = 1
-			transforms.push('scale(1)');
-			$(el).parent().css("transform", transforms.join(' '));
-			
-			$(el).parent().unbind('touchstart');
-		}
-		
-		setTimeout(function(){
-			$(el).parent().css("transition", "");
-		}, 300);
-	});
-}
 
 $(document).ready(function(){
 	appInit();

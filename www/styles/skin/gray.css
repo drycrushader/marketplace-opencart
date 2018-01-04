@@ -1,0 +1,111 @@
+a:not(.btn), a:not(.btn):hover, a:not(.btn):visited, a:not(.btn):focus, 
+a.btn-default, a.btn-default:hover, a.btn-default:visited, a.btn-default:focus
+{
+	color: #888;
+}
+
+/* li.nav-item a.nav-link */
+/* { */
+	/* color: #ff7f50 !important; */
+/* } */
+
+.facebook-color{    background-color:#3b5998;    color:#FFFFFF !important;}
+.twitter-color{     background-color:#4099ff;    color:#FFFFFF !important;}
+.google-color{      background-color:#d34836;    color:#FFFFFF !important;}
+.whatsapp-color{    background-color:#34AF23;    color:#FFFFFF !important;}
+.pinterest-color{   background-color:#C92228;    color:#FFFFFF !important;}
+.sms-color{         background-color:#27ae60;    color:#FFFFFF !important;}
+.mail-color{        background-color:#3498db;    color:#FFFFFF !important;}
+.dribbble-color{    background-color:#EA4C89;    color:#FFFFFF !important;}
+.tumblr-color{      background-color:#2C3D52;    color:#FFFFFF !important;}
+.reddit-color{      background-color:#336699;    color:#FFFFFF !important;}
+.youtube-color{     background-color:#D12827;    color:#FFFFFF !important;}
+.phone-color{       background-color:#27ae60;    color:#FFFFFF !important;}
+
+.bg-light {
+    background-color: #fafafa!important;
+}
+
+.bg-dark {
+    background-color: #333!important;
+}
+
+.button-dark {
+    background-color: #444;
+}
+
+.header-light {
+    background-color: #fff;
+    box-shadow: none!important;
+}
+
+#page-content
+{
+	background: none;
+}
+
+.sidebar-light, .sidebar-light .submenu, .sidebar-light .submenu .menu-item {
+    background-color: #FFF! important;
+}
+
+.sidebar-left.sidebar-light .sidebar-header{
+    /* background: url(../images/background.jpg) no-repeat; */
+    background: #222;
+	color: #CCC;
+}
+
+.sidebar-left.sidebar-light .sidebar-header:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  width: 0px;
+  height: 0px;
+  border-bottom: 30px solid rgba(0,0,0,0);
+  border-right: 70px solid #222; /*Set to background color, not transparent!*/
+}
+
+.content-strip .overlay.bg-dark {
+    /* background: url(../images/background.jpg) no-repeat; */
+    background: none;
+}
+
+.content-strip .overlay {
+    background-color: #fff;
+}
+
+.content-strip .overlay.bg-dark {
+	background: rgba(255, 255, 255, 1) !important;
+}
+
+.content-strip .strip-content h4, .content-strip .strip-content p {
+    color: inherit;
+}
+
+.content-strip .strip-content i button {
+    background-color: transparent;
+	box-shadow: none;
+	font-size: 18px;
+	color: #FAFAFA;
+	text-shadow: 0px 0px 3px rgba(100, 100, 100, 1);
+}
+
+.content-strip .strip-content > i
+{
+	color: #EEE;
+}
+
+.category_container, .brand_container {
+    background: #FAFAFA;
+}
+
+.product_grid .sale_badge {
+    background: #ff7f50;
+    background: #fa8072;
+	background: dimgray;
+	font-size: 10px;
+}
+
+.nav-tabs {
+    background: dimgray;
+}
