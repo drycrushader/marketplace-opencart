@@ -461,7 +461,6 @@ function appInit()
 							if (footer_reached2 == true){            
 								if(loading == false)
 								{
-									// alert(footer_reached2);
 									loading = true;
 									$.ajax({
 										method: "GET",
@@ -884,9 +883,6 @@ var wishlist = {
 				}
 
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
-			},
-			error: function(xhr, ajaxOptions, thrownError) {
-				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
 			}
 		});
 	},
